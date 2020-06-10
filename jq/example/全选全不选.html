@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全选</title>
+	<script src="js/jquery-3.4.1.js"></script>
+	<script>
+		//window.onload=function(){}
+		
+		//$(document).ready(function(){})
+		$(function(){
+			//全选
+			$("button:eq(0)").click(function(){
+				$(":checkbox").prop("checked",true)
+			})
+			//全不选
+			$("button:eq(1)").click(function(){
+				$("[name]").prop("checked",false)
+			})
+		})
+	</script>
+</head>
+<body>
+	
+	<form action="">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<input type="checkbox" name="sid">
+		<br>
+		<button type="button">全选</button>
+		<button type="button">全不选</button>
+	</form>
+	
+</body>
+</html>

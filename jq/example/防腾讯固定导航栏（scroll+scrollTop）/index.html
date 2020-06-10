@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>防腾讯固定导航栏</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    img{display:block;margin:0 auto;}
+  </style>
+  <script type="text/javascript" src="../开关灯案例(转换)/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript">
+    /*$(function() {});*/
+    $(window).load(function() {
+      var topH=$(".top").outerHeight(true);
+	  
+	  //取得文档滚动条滚动的高度
+	  $(document).scroll(function(){
+		  var scrollH=$(document).scrollTop()
+		  if(scrollH>topH){
+			  //设置.nav固定定位
+			  $(".nav").css({"position":"fixed","top":0})
+		  }
+		  //判断滚动条滚动的高度小于.top的高度时，设.nav的定位为""
+		  if(scrollH<topH){
+		  			  //设置.nav固定定位
+		  			  $(".nav").css({"position":"","top":0})
+		  }
+	  })
+		  
+	  
+	  
+    });
+  </script>
+</head>
+
+<body>
+  <div class="top">
+    <img src="images/top.png" />
+  </div>
+  <div class="nav">
+    <img src="images/nav.png" />
+  </div>
+  <div class="main">
+    <img src="images/main.png" />
+  </div>
+</body>
+
+</html>

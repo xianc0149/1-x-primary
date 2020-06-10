@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>开关灯案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 944px;
+      margin: 50px auto 0;
+    }
+  </style>
+  <script src="jquery-1.11.1.min.js"></script>
+  <script>
+    $(function() {
+      $("[value*='开']").click(function(){
+		  $("body").css("background","white")
+	  })
+	   $("[value*='关']").click(function(){
+		   $("body").css("background","black")
+	   })
+    });
+  </script>
+</head>
+
+<body>
+  <input type="button" value="开灯" id="j_openLight" />
+  <input type="button" value="关灯" id="j_closeLight" />
+  <div>
+    <img src="imgs/coder.jpg" alt="" />
+  </div>
+</body>
+
+</html>

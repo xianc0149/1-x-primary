@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用jQuery完成省市二级联动</title>
+		<style type="text/css">
+			.top{
+				border: 1px solid red;
+				width: 32.9%;
+				height: 50px;
+				float: left;
+			}
+ 
+			#clear{
+				clear: both;
+			}
+			#menu{
+				border: 1px solid blue;
+				width: 99%;
+				height: 40px;
+				background-color: black;
+			}
+			#menu ul li{
+				display: inline;
+				color: white;
+				font-size: 19px;
+			}
+			#bottom{
+				text-align: center;
+			}
+			#contanier{
+				border: 1px solid red;
+				width: 99%;
+				height: 600px;
+				background: url(../img/regist_bg.jpg);
+				position: relative;
+			}
+			#content{
+				border: 5px solid gray;
+				width: 50%;
+				height: 60%;
+				position: absolute;
+				top: 100px;
+				left: 300px;
+				background-color: white;
+				padding-top: 50px;
+			}
+ 
+		</style>
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+		<script>
+			$(function(){
+				//2.创建二维数组用于存储省份和城市
+				var cities = new Array(3);
+				cities[0] = new Array("武汉市","黄冈市","襄阳市","荆州市");
+				cities[1] = new Array("长沙市","郴州市","株洲市","岳阳市");
+				cities[2] = new Array("石家庄市","邯郸市","廊坊市","保定市");
+				cities[3] = new Array("郑州市","洛阳市","开封市","安阳市");
+				
+				$("#province").change(function(){
+					//找到select菜单，添加内容改变事件
+					var idx=$(this).find(":selected").val()
+					//通过省的value，取出数组里对应的城市数据
+					var city=cities[idx]
+					//通过数组，生成对应个数的option
+					var opts="";
+					for(var i=0;i<city.length;i++){
+						opts=opts+"<option>"+city[i]+"<option>"
+					}
+					
+					//将存好的option字符串追加到city的菜单中
+					
+					//把city中的内容清空
+					$("#city").empty().append(opts)
+					
+				})
+				
+			});
+		</script>
+			
+	</head>
+<body>
+	<select id="province">
+		<option>--请选择--</option>
+		<option value="0">湖北</option>
+		<option value="1">湖南</option>
+		<option value="2">河北</option>
+		<option value="3">河南</option>
+	</select>
+	<select id="city">
+		
+	</select>
+
+</body>
+</html>

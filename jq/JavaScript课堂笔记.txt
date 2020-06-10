@@ -1,0 +1,291 @@
+第1章 jQuery基础
+	1.1 认识jQuery
+	1.2 使用jQuery
+		1.2.1 下载jQuery
+		1.2.2 安装jQuery
+		1.2.3 测试jQuery
+	1.3 实战案例
+第2章 使用选择器
+	2.1 jQuery选择器基础
+	2.2 基本选择器
+		2.2.1 ID选择器     id           $("#cl")
+		2.2.2 类型选择器  element $("div")
+		2.2.3 类选择器      class       $(".cl")
+		2.2.4 通配选择器  *             $("*")
+		2.2.5 分组选择器 selector    $("div,span,p.myClass")
+	2.3 结构选择器
+		2.3.1 层级选择器
+		包含选择器、子选择器、相邻选择器、兄弟选择器
+		2.3.2 子元素选择器
+		:nth-child 第n个子元素(从1开始)
+		:first-child 第一个子元素
+		:last-child 最后一个子元素
+		:only-child 只有一个子元素的元素
+	2.4 过滤选择器
+		通过特定的过滤表达式来筛选特殊需求的DOM元素
+		2.4.1 定位过滤器
+		根据编号和排位筛选特定位置上的元素。
+		2.4.2 内容过滤器
+		根据匹配元素所包含的子元素或文本内容进行过滤。
+		:contains 匹配包含给定文本的元素。
+		:empty 空元素
+		:has 含有选择器所匹配的元素的元素。
+		:parent 该元素有子元素或文本。
+		2.4.3 可见过滤器
+		:hidden 不可见元素
+		:visible 可见元素
+	2.5 属性选择器
+		主要根据属性及属性值作为过滤的条件。
+		[attribute] 包含此属性的所有元素
+		[attribute=value] 属性等于特定值的所有元素
+		[attribute!=value] 属性不等于特定值的所有元素
+		[attribute$=value] 属性的值以“value”结尾的元素
+		[attribute^=value] 属性的值以“value”开始的元素
+		[attribute*=value] 属性的值中包含“value”的元素
+		[s1][s2][s3]...[sn] 复合属性选择器，同时满足多个条件的元素
+		例如 $("input[name*='text'][id]")，表示匹配input标签中包含name和id两个属性的元素，而且name属性的值中必须要包含“text”字符串。
+		[补充：]
+		html(): 该函数的作用是设置或显示标签中的内容。
+		attr(): 该函数的作用是设置或读取标签中某属性的值。
+	2.6 表单选择器
+		2.6.1 基本表单选择器
+		:input 所有标签为input的元素
+		:text 文本框
+		:password 密码框
+		:radio 单选按钮
+		:checkbox 复选框
+		:submit 提交按钮
+		:image 图像域
+		:reset 充值按钮
+		:button 按钮
+		:file 文件域
+		:hidden 隐藏域
+		val():该函数的作用：读取或设置元素“value”属性的值。
+		2.6.2 高级表单选择器
+		:enabled 匹配所有可用元素
+		:disabled 匹配所有不可用元素
+		:checked 匹配所有被选中的元素(复选框、单选按钮)
+		:selected 匹配所有选中的option元素。(select)
+		removeAttr(): 该函数的作用是删除元素已有的某个属性。
+
+	2.7 jQuery选择器优化
+		第一、多用ID选择器
+		第二、少使用class选择器
+			使用复合选择器来替代，例如，tag.className。p.red。
+		第三、多用父子关系，少用嵌套关系
+		第四、缓存jQuery对象
+
+	2.8 使用原生选择器
+		DOM API中核心的两个方法：
+			querySelector()和querySelectorAll()
+
+第3章 使用过滤器
+	jQuery过滤器是一系列简单、实用的jQuery方法，建立在选择器基础上对jQuery对象进行二次过滤。包括：过滤、查找、串联三类操作。
+	3.1 过滤
+		eq(index) 获取index索引值指定的元素，从0开始计数
+		hasClass(class) 检查当前元素是否含有某个特定的类，有，返回true.
+		filter(expr) 过滤出与指定的表达式所匹配的元素
+		filter(fn) 过滤出与指定的函数返回值所匹配的元素
+		is(expr) 用一个表达式检查当前元素集合，若至少有一个元素符合给定的表达式就返回true。
+		map(callback) 将一组元素转换成其他数组
+		has(expr)保留包含特定后代的元素。
+		not(expr) 删除与指定表达式匹配的元素
+		slice(start[,end]) 求子集
+		3.1.1 类过滤器：hasClass(className)
+		3.1.2 下标过滤：eq(index)
+		3.1.3 表达式过滤 
+			1、filter(expr/fn)
+			2、has()
+		3.1.4 判断：is(expr)
+		3.1.5 映射：map(callback)
+		3.1.6 清除：not(expr) 从jQuery对象中删除符合条件的元素。
+		3.1.7 截取：slice(start[,end]) 从0开始计数，从jQuery对象中截取部分元素
+	3.2 查找
+		查找当前元素的父级、同级和下级元素。
+		3.2.1 向下查找
+			1、children([expr]) 查找当前元素的所有或部分子元素
+			2、contents() 可以获取当前元素所包含的子元素、本文元素和注释元素。
+			3、find() 查找所有后代元素。
+		3.2.2 向上查找
+			1、parents([expr]) 查找所有匹配元素的祖先元素。
+			2、parent([expr]) 查找所有匹配元素的唯一父元素。
+			3、parentsUntil([selector]) 查找指定范围的所有祖先元素。
+			4、offsetParent() 查找当前元素最近的定位包含框，只对可见元素有效。
+			5、closest(expr[,context]) 查找指定的父元素，主要用户事件处理。
+		3.2.3 向前查找
+			1、prev([expr]) 匹配前一个相邻的元素。
+			2、prevAll([expr]) 向前选取所有同辈的元素。
+			3、prevUntil([selector]) 向前选取指定范围的相邻元素。
+		3.2.4 向后查找
+			1、next([expr]) 匹配后一个相邻的元素。
+			2、nextAll([expr]) 向后选取所有同辈的元素。
+			3、nextUntil([selector]) 向后选取指定范围的相邻元素。
+		3.2.5 查找同辈元素 siblings([expr]) 查找所有兄弟元素。
+		3.2.6 添加查找 add(expr[,context]) 为查找的结果集添加新的查找内容。
+	3.3 串联 实现操作不同的jQ对象，或前后的方法相互影响。
+		3.3.1 合并jq对象 addBack() 将前后的对象合并在一起。
+		3.3.2 返回jq对象 end() 返回上一级jq对象。
+
+第4章 操作DOM
+	分为3个方面：DOM Core(核心)、HTML DOM、CSS DOM。
+	4.1 创建节点
+		DOM中的节点包括：元素、属性、文本。
+		4.1.1 创建元素
+			DOM提供的方法：document.createElement("tagName")。//js
+			jq方式：$("所创建节点的字符串");
+		4.1.2 创建文本
+			DOM提供的方法：document.createTextNode("文本内容")。//js
+			jq方式：$("所创建文本的字符串");
+		4.1.3 创建属性
+			DOM提供的方法：标签名.setAttribute(name,value)。//js
+			jq方式：$("所创建的属性对的字符串");
+	4.2 插入节点
+		4.2.1 内容插入
+			js方式：document.appendChild(newChild)//在原有部分的尾部追加
+					document.insertBefore(newChild,refChild)//在匹配元素的前面插入 
+			jq方式: A.append(content/function(index,html))//尾部追加
+					A.append(B)
+					B.appendTo(A)
+					prepend(参数同上)//添加到首部
+					prependTo()
+		4.2.2 外部插入
+			jq方式：after(content/function(index,html))//将参数插入到匹配元素的后面
+					before(同上)//将参数插入到匹配元素的前面
+					insertAfter()
+					insertBefore()
+	4.3 删除节点
+		js: removeChild(node)
+		jq:remove()删除所匹配的元素，empty()清空所匹配的元素，detach()分离（删除）
+	4.4 复制节点
+		js（DOM）方式：cloneNode(true/false) 参数为true,复制节点本身及所包含的内容，否则只复制该节点。
+		jq方式：clone()：同上。
+	4.5 替换节点
+		js方式：replaceChild(newNode,oldNode) 替换成功，则返回被替换的节点，否则返回null
+		jq方式：replaceWith(newContent/function) $A.replaceWith($B)
+				replaceAll(oldContent) $B.replaceAll($A)
+	4.6 包裹元素
+		js方式：无
+		jq方式：外包：wrap() 在每个匹配的元素的外面包裹上一个元素
+				内包：wrapInner() 在每个匹配的元素的内容外面包裹一层元素
+				总包：wrapAll() 在所有匹配元素的外面包裹一层元素
+				卸包：unwrap() 与wrap()相反，将匹配元素的父级元素删除，保留自身在原来的位置。
+	4.7 操作属性
+		4.7.1 设置属性：js：setAttribute(name,value) 
+						jq: prop(name|properties|key,value|key,fun)，对表单元素（新版：checked、disabled）
+							attr(name|properties|key,value|key,fun)，对表单以外的元素
+		4.7.2 访问属性：js：getAttribute(name) 
+						jq: prop(name)，
+						对表单元素（新版：checked、disabled）
+							attr(name)，对表单以外的元素
+		4.7.3 删除属性：js:removeAttribute(name) 
+						jq: removeProp(name)，
+						对表单元素（新版：checked、disabled）
+							removeAttr(name)，对表单以外的元素
+	4.8 操作类（jq）
+		4.8.1 添加类样式： addClass(className|function(index,class))//可以同时添加多个类样式，之间用空格隔开。
+		4.8.2 删除类样式： removeClass(className|function(index,class))
+		4.8.3 切换类样式：toggleClass(className|className,switch|function(index,class),[switch])
+			switch:开关参数，为true，表示要添加类样式，为false表示要删除类样式。
+		4.8.4 判断类样式：Dom: hasAttribute（name）;
+						jq:hasClass(className)//返回布尔值，true表示含有该类样式，否则表示不含。
+	4.9 操作内容
+		4.9.1 读写HTML字符串
+		JS:innerHTML属性，以字符串形式读写元素及所包含的HTML结构
+		JQ:html( |htmlString|function(index,html))
+			无参表示读取，有参表示写入，同时覆盖原有内容。
+		4.9.2 读写文本
+		jq:text( |textString|function(index,text))
+			无参表示读取，有参表示写入，同时覆盖原有内容。
+		4.9.3 读写值
+		jq:val( |value|function(index,value))
+			无参：表示读取表单元素的值，有参：表示向元素写入值。
+
+	4.10 操作CSS样式表
+		4.10.1 读写CSS样式：引入样式3种方式：行内、文档内、文档外
+			JS:行内，操作属性 style
+			jq：css(propertyName|propertyName,value|propertyName,fun()|map)
+		4.10.2 绝对定位
+			js:offsetLeft、offsetTop：获取元素最近的偏移量。
+				offsetParent：自动识别当前元素偏移的参照对象。
+				注意：不同的浏览器参照对象不同：
+					IE：以父元素为参照对象。
+					非IE：以最近非静态定位元素为参照对象。
+			jq：offset( |coordinates|function(index,coords))
+		4.10.3 相对定位
+			jq：position( |coordinates|function(index,coords))
+			两者的区别：offset():参照document
+						position():参照offsetParent的当前元素的坐标
+		4.10.4 控制大小
+			jq：width( |value|function(index,width))
+				height( |value|function(index,width))
+				innerHeight()、innerWidth(): 内高、内宽（内容），包括padding。
+				outerHeight()、outerWidth():总高、总宽（包括本身的宽高、补白的宽高、边框的宽高）
+
+	4.11 遍历文档：遍历文档中的任何元素
+		jq:children()、next()、prev()、parent()。
+
+第5章 事件处理
+	5.1 事件基础
+	JS以事件驱动实现页面交互。事件驱动的核心：以消息为基础，以事件驱动。
+	5.1.1 绑定事件
+		四种方法：bind()、live()、delegate()、on()。
+		on(event,childselector,data,function)
+	5.1.2 事件方法
+		24个快捷方法：参考API帮助文档
+	5.1.3 绑定一次性事件
+		one(event,[data],fun)
+	5.1.4 注销事件
+		四种方法：unbind()、die()、undelegate()、off()。
+	5.1.5 使用事件对象：
+		Event对象包括一些属性、方法。参照API文档。
+	5.1.6 触发事件： trigger(type,[data]) 不仅自动执行所触发事件的行为，		而且会执行浏览器默认的事件行为，return false。
+					triggerHandler(type,[data]) 只执行所触发的事件，不执行默认事件。
+	5.2 实战案例
+		5.2.1 切换事件
+			hover() 当鼠标移入时调用第一个函数，鼠标移出时调用第二个函数
+			toggle([speed],[easing],[fn]) 显示或隐藏元素
+				speed:slow,normal,fast;
+				easing:swing,linear;
+				fn:动画完成时执行的函数
+		5.2.2 事件命名空间
+			jq支持事件命名空间，方便对事件的管理。
+			实现方式：在事件类型后面通过点语法设置别名。
+			1、为多个事件起同一个别名，通过别名实现操作一组事件。
+			2、为一个事件命名多个别名，以别名来解绑部分函数。
+		5.2.3 绑定多个事件
+			1、bind():利用jq的链式语法
+			2、on():支持同时绑定多个事件。
+		5.2.4 自定义事件:先绑定自定义的事件，再触发该事件。
+			自定义的事件需要通过代码来触发，例如：trigger()
+		5.2.5  页面初始化：当DOM文档载入就绪时自动执行的函数。
+			1、jq：ready()方法
+			2、js：window.onload
+			ready()一般有如下方式调用：
+			1、$(function($){})
+			2、jQuery(function($){})
+			3、$(document).ready(function(){})
+			总结：
+			1、ready()与js中的load不能同时使用，否则会引发冲突。
+			2、jq的ready()与js的load存在细微的区别：
+			1）js的load是在文档完全加载完成之后才会被触发，包括页面中所有节点以及相关联的文件。
+			2）jq的ready()在DOM完全就绪时被触发，相关联的文件可能没有下载完。
+			解决办法：jq中的load事件，等效于js的load事件。
+			$(window).load(function(){})等价于window.onload=function(){}
+			总结：
+			1、如果需要在一个页面中设置多个初始化函数，用ready()
+			2、如果需要加载完全部的相关文件，再进行触发，用load
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+		
