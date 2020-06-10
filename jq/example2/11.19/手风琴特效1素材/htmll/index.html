@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		body,ul,li,p,h3{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			width: 938px;
+			height: 128px;
+			border: 1px solid #d3d3d3;
+		}
+		.wrapper li{
+			width: 156px;
+			height: 128px;
+			float: left;
+			overflow: hidden; /*溢出的部分隐藏 */
+		}
+		.wrapper li a{
+			display: block;
+			height: 128px;
+			width: 156px;
+			position: relative;
+			overflow: hidden;
+			text-decoration: none; /* 超链接的下划线没有 */
+		}
+		.wrapper img{
+			position: absolute;
+			bottom: 0;
+			right: -15;
+			height: 72px;
+			width: 117px;
+		}
+		.wrapper .info{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 136;
+			padding: 4px 10px;
+		}
+		.wrapper .info h3{
+			font-size: 14px;
+			font-weight: 700;
+		}
+		.wrapper .info p{
+			color: #868686;
+			font-size: 12px;
+			height: 22px;
+			line-height: 22px;
+			width: 136px;
+			overflow: hidden;
+		}
+		.wrapper .info .price{
+			font-size: 14px;
+			font-style: italic;
+			color: #fa2a5d;
+			height: 35px;
+		}
+		.wrapper .line{
+			position: absolute;
+			right: 0;
+			width: 0;
+			height: 128px;
+			border: 1px dashed #cacaca;
+		}
+		.wrapper .mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 128px;
+			width: 156px;
+			opacity: 0;
+			background: black;
+		}
+		.wrapper li.big,li.big a{
+			width:314px;
+		}
+		.wrapper li.big img{
+			width: 195px;
+			height: 120px;
+			right: 0;
+			bottom: 0;
+		}
+		.wrapper li.big .info{
+			width: 290px;
+		}
+		.wrapper li.big h3{
+			font-size: 18px;
+		}
+		.wrapper li.big p{
+			font-size: 14px;
+			width: 166px;
+		}
+		.wrapper li.big p.price{
+			font-size: 16px;
+			padding-top: 7px;
+		}
+		/* 遮罩层的效果样式 */
+		.wrapper:hover .mask{
+			opacity: 0.15;
+		}
+		.wrapper li.big a:hover .mask{
+			opacity: 0;
+		}
+		.wrapper ul *{
+			transition: all linear 0.5s;
+		}
+	</style>
+	<script type="text/javascript" src="../jquery-1.12.4.min.js"></script>
+	<script>
+		// $(function(){
+		// 	$(".wrapper li").hover(function(){
+		// 		$(".wrapper li").removeClass();
+		// 		$(this).addClass('big');
+		// 	},function(){
+		// 		$(".wrapper li").removeClass();
+		// 		$(".wrapper li").eq(0).addClass('big');
+		// 	})
+			
+		// })
+		
+		window.onload=function(){
+			//绑定事件
+			function bind(el,eventType,callback){
+					if(typeof el.addEventListener=='function'){
+						el.addEventListener(eventType,callback,false);
+					}else if(typeof el.attachEvent=='function'){
+						el.attachEvent('on'+eventType,callback);
+					}
+			}
+			
+			
+			
+			
+			
+			//鼠标经过时的处理
+			function mouseoverHandler(e){
+				var target=e.target||e.srcElement;
+				var outer=document.getElementById('subject');
+				var list=outer.getElementsByTagName('li');
+				for(var i=0;i<list.length;i++){
+					list[i].className="";
+				}
+				while(target.tagName!='LI' && target.tagName!='BODY'){
+					target=target.parentNode;
+				}
+				target.className='big';
+			}
+			
+			//初始化列表
+			function initList(){
+				var outer=document.getElementById('subject');
+				var list=outer.getElementsByTagName('li');
+				for(var i=0;i<list.length;i++){
+					bind(list[i],'mouseover','mouseoverHandler')
+				}
+			}
+			initList();
+		}
+		
+	</script>
+	<body>
+		<div id="subject" class="wrapper">
+			<ul>
+				<li class="big">
+					<a href="">
+						<img src="../img/1.png" alt="加载出错">
+						<div class="info">
+							<h3>聚美妆</h3>
+							<p>聚美妆二分之一周年庆</p>
+							<p class="price"><strong>1</strong><i>折起</i></p>
+						</div>
+						<s class="line"></s>
+						<i class="mask"></i>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="../img/2.png" alt="加载出错">
+						<s class="line"></s>
+						<i class="mask"></i>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="../img/3.png" alt="加载出错">
+						<s class="line"></s>
+						<i class="mask"></i>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="../img/4.png" alt="加载出错">
+						<s class="line"></s>
+						<i class="mask"></i>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="../img/5.png" alt="加载出错">
+						<s class="line"></s>
+						<i class="mask"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

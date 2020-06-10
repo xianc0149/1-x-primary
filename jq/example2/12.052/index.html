@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<audio id="myAudio" controls width="200px" src="mp3/心弦%20-%20天空之城%20(指弹吉他版).mp3">
+				
+			</audio>
+			<div>
+				<button id="playPause" onclick="playPause()">播放</button>
+				<button onclick="goBack(3)">快进3秒</button>
+				<button onclick="goBack(-3)">快退3秒</button>
+				<button onclick="volume(0.1)">音量</button>
+				<button onclick="volume(-0.1)">音量</button>
+				<button id="isMuted" onclick="isMuted()">静音</button>
+				<script src="js/js.js" type="text/javascript"></script>
+				</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script>
+		function clockon(){
+			//获取当前系统日期,转换成中文格式
+			var now=new Date();//获取系统当前日期
+			var year=now.getFullYear();//获取年
+			var month=now.getMonth();//获取英式月份,他的月份是从零开始的,所以要加一
+			month++;
+			var date=now.getDate();//获取日
+			var day=now.getDay();//获取星期,得到的其实只是一个数字,从零开始
+			var arr_week=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六")
+			var week=arr_week[day];//获取中文星期
+			var time=year+"年"+month+"月"+date+"日"+week;//组成当前系统的当前日期
+			var textTime=document.createTextNode(time);//创建文本节点
+			document.getElementById("clock").appendChild(textTime);
+		}
+		window.onload = clockon;
+	</script>
+	<body>
+		<div id="clock"></div>
+	</body>
+</html>

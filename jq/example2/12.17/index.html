@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3鼠标跟随导航特效</title>
+<style>
+html{/*body的父级元素*/
+	height:100%;
+}
+body{
+	height:100%;
+	margin:0;/*取消浏览器的默认样式*/
+	background:url(images/wallpaper4.jpg) center/100% 100%;/*设置背景图片*/
+	/*background-size:100% 100%;设置背景图的大小*/
+	overflow:hidden;
+}
+.box{
+	width:1210px;/*测量获取*/
+	height:450px;
+	/*background:red;*/
+	margin:20px auto 0;/*上50px，左右自动，下0*/
+	position:relative;/*为遮罩层设置的相对定位*/
+}
+.box ul li{	
+	width:230px;
+	height:140px;
+	/*background:yellow;*/
+	float:left;/*任何元素都可以浮动*/
+	margin:5px;
+	background-image:url(images/clients.png);
+	background-position:0 0;
+	border:1px dotted #ccc;
+	transition:.6s ease-in;
+
+}
+ul{/*将ul默认样式取消，记住各种标签的默认样式*/	
+	margin:0;/*默认样式：1em/16px*/
+	padding:0;/*默认样式：40px*/
+	list-style-type:none;/*默认样式：disc，圆点*/
+}
+.box .cover{	
+	width:230px;
+	height:140px;
+	position:absolute;/*父元素设置相对，子元素设置绝对*/
+	left:6px;
+	top:6px;
+	background:rgba(0,0,0,.3);
+	transition:.6s ease-in;
+}
+</style>
+</head>
+
+<body>
+<!--S box-->
+<div class="box">
+	<ul>
+    	<li style="background-position:0 0;"></li>
+        <li style="background-position:-230px 0;"></li>
+        <li style="background-position:-460px 0;"></li>
+        <li style="background-position:-690px 0;"></li>
+        <li style="background-position:-920px 0;"></li>
+        <li style="background-position:-1150px 0;"></li>
+        <li style="background-position:-1380px 0;"></li>
+        <li style="background-position:-1610px 0;"></li>
+        <li style="background-position:-1840px 0;"></li>
+        <li style="background-position:-2070px 0;"></li>
+        <li style="background-position:-2300px 0;"></li>
+        <li style="background-position:-2530px 0;"></li>
+        <li style="background-position:-2760px 0;"></li>
+        <li style="background-position:-2990px 0;"></li>
+        <li style="background-position:-3220px 0;"></li>
+    </ul>    
+    <div class="cover"></div><!--遮罩层-->
+</div>
+<!--E box-->
+<script>
+	/*
+		让遮罩层跟随鼠标移动到元素的位置进行移动
+		鼠标移动到当前元素，第2个元素：右移263px
+		获取当前元素距离顶部及左部的距离。		
+	*/
+	
+</script>
+</body>
+</html>

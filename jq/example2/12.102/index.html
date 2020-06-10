@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>随机数抽奖</title>
+		<style type="text/css">
+		body {
+			background-attachment: scroll;
+			background-image: url(img/s1.jpg);
+			background-repeat: no-repeat;
+			background-position: center top;
+		}
+		#title {
+			font-size: 25px;
+			font-weight: bolder;
+			color: #FFF;
+			text-align: center;
+			height: 25px;
+			width: 300px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		#re {
+			font-size: 25px;
+			line-height: 50px;
+			color: #FFF;
+			text-decoration: none;
+			background-color: #F90;
+			text-align: center;
+			vertical-align: middle;
+			height: 50px;
+			width: 120px;
+			float: right;
+			margin: 10px;
+		}
+		#re a {
+			color: #FFF;
+			text-decoration: none;
+			height: 50px;
+			width: 120px;
+			font-weight: bold;
+			display: block;
+		}
+		#msg {
+			font-size: 25px;
+			font-weight: bold;
+			color: #FF6;
+			height: 50px;
+			width: 100%;
+			margin-right: auto;
+			margin-left: auto;
+			line-height: 50px;
+			vertical-align: middle;
+			padding-left: 30px;
+		}
+		#box {
+			height: 356px;
+			width: 890px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.m {
+			font-size: 22px;
+			line-height: 60px;
+			font-weight: bold;
+			color: #FFF;
+			background-color: #006;
+			text-align: center;
+			vertical-align: middle;
+			margin: 5px;
+			float: left;
+			height: 60px;
+			width: 100px;
+		}
+		
+		#bottom {
+			margin-right: auto;
+			margin-left: auto;
+			width: 890px;
+		}
+		#start {
+			font-size: 25px;
+			line-height: 50px;
+			font-weight: bold;
+			color: #FFF;
+			text-align: center;
+			vertical-align: middle;
+			float: right;
+			height: 50px;
+			width: 120px;
+			margin: 10px;
+		}
+		#stop {
+			font-size: 25px;
+			line-height: 50px;
+			font-weight: bold;
+			color: #FFF;
+			text-align: center;
+			vertical-align: middle;
+			float: right;
+			height: 50px;
+			width: 120px;
+			margin: 10px;
+		}
+		#start a {
+			color: #FFF;
+			text-decoration: none;
+			background-color: #0C6;
+			display: block;
+			height: 50px;
+			width: 120px;
+		}
+		#stop a {
+			color: #FFF;
+			text-decoration: none;
+			background-color: #C30;
+			display: block;
+			height: 50px;
+			width: 120px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="title">祝愿您抽中大奖</div>
+
+		<div id="box">
+			<div class="m" >1元</div>
+			<div class="m">20元</div>
+			<div class="m">3元</div>
+			<div class="m">400元</div>
+			<div class="m">50元</div>
+			<div class="m">600元</div>
+			<div class="m">70元</div>
+			<div class="m">800元</div>
+			<div class="m">9元</div>
+			<div class="m">100元</div>
+			<div class="m">1100元</div>
+			<div class="m">12元</div>
+			<div class="m">130元</div>
+			<div class="m">1400元</div>
+			<div class="m">15元</div>
+			<div class="m">160元</div>
+			<div class="m">1700元</div>
+			<div class="m">18元</div>
+			<div class="m">190元</div>
+			<div class="m">2000元</div>
+			<div class="m">21元</div>
+			<div class="m">220元</div>
+			<div class="m">2300元</div>
+			<div class="m">24元</div>
+			<div class="m">25元</div>
+			<div class="m">2600元</div>
+			<div class="m">27元</div>
+			<div class="m">280元</div>
+			<div class="m">2900元</div>
+			<div class="m">30元</div>
+			<div class="m">310元</div>
+			<div class="m">3200元</div>
+			<div class="m">33元</div>
+			<div class="m">340元</div>
+			<div class="m">3500元</div>
+			<div class="m">36元</div>
+			<div class="m">370元</div>
+			<div class="m">3800元</div>
+			<div class="m">39元</div>
+			<div class="m">400元</div>
+			  
+		</div>
+		<div id="bottom">
+			<div id="start" ><a href="#" onClick="start()">开始</a></div>
+			<div id="stop"><a href="#" onClick="stop()">停止</a></div>
+			<div id="re"><a href="#" onClick="re()">重置</a></div>
+		</div>
+		<div id="msg"></div>
+		<script language="javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script language="javascript">
+		// var k=0;
+		var t;//存储刷新函数
+		var i;//控制数组索引位置
+		var bs=true;//作为红绿灯标志
+		
+		function start(){//开始抽奖
+			// k++;
+			// console.log(k)
+			loop();
+		}
+		
+		function loop(){//循环抽奖
+			setTimeout(loop,100);//每隔25毫秒刷新一次
+			var r=Math.random()*40;
+			
+			i=parseInt(r);
+			if(bs){
+				document.getElementsByClassName("m")[i].style.background="red";
+				bs=false;
+			}else{
+				for(var inx=0;inx<document.getElementsByClassName("m").length;inx++)
+				document.getElementsByClassName("m")[inx].style.background="#006";
+				bs=true;
+			}
+		}
+		
+		function stop(){
+			clearTimeout(t);
+			document.getElementsByClassName("m")[i].style.background="red";
+			document.getElementById("msg").innerHTML=document.getElementById("msg").innerHTML+"<br/>"+document.getElementsByClassName("m")[i].innerHTML;
+		}
+		
+		function re(){
+			document.getElementById("msg").innerHTML="";
+		}
+		
+		</script>
+	</body>
+</html>

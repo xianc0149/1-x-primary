@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>折叠面板</title>
+		<style>
+        .clooapse{
+				width: 340px;
+				border: solid 1px #ccc;
+				margin: 2px;
+				float: left;
+			}
+			.clooapse dt{
+				padding:8px;
+				background: url(img/green.gif) repeat-x;
+				font-size: 13px;
+				font-weight: bold;
+				color: #71790C;
+				border-bottom: solid 1px #efefef;
+				cursor: pointer;
+			}
+			.clooapse dd{
+				margin: 0px;
+				padding: 6px;			
+			}
+        </style>
+	
+		<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+		<script>
+			$(function(){
+				var t=[];
+				var dt=$("dl.collapse dt");
+				var dd=$("dl.coolapse dd");
+				//遍历每一个对象
+				dt.each(function(i){
+					t[i]=false;//表示当前dd处于展开状态
+					$(dt[i]).click(function(i,dd){
+						return function(){
+							if(t[i]){//为真表示处于收起状态
+								$(dd).show();
+								t[i]=false;
+								}
+							else{
+								$(dd).hide();
+								t[i=true];
+							}
+							};
+						}(i,dd[i]));
+				});
+			})
+		</script>
+	</head>
+	
+	<body>
+		<dl class="clooapse">
+			<dt>标题栏</dt>
+			<dd><img src="img/bg2.jpg" height="200" ></dd>
+		</dl>
+		<dl class="clooapse">
+			<dt>标题栏</dt>
+			<dd><img src="img/bg3.jpg" height="200" ></dd>
+		</dl>
+		<dl class="clooapse">
+			<dt>标题栏</dt>
+			<dd><img src="img/bg4.jpg" height="200" ></dd>
+		</dl>
+		
+	</body>
+</html>

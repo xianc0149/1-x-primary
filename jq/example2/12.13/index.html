@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>新用户注册</title>
+		<style type="text/css">
+		body,td,th {
+			font-size: 1em;
+			color: #0066cc;
+		}
+		body {
+			background-color: #999999;
+			margin-left: 0px;
+			margin-top: 0px;
+			margin-right: 0px;
+			margin-bottom: 0px;
+		}
+		#war {
+			height: 600px;
+			width: 80%;
+			margin-top: 20px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.in {
+			font-weight: bold;
+			color: #669933;
+			height: 30px;
+			width: 100%;
+			border: 1px solid #6677ff;
+			font-size: 1.5em;
+			line-height: 30px;
+			vertical-align: middle;
+		}
+		
+		.err {
+			font-weight: bold;
+			color: #FFFF00;
+			height: 30px;
+			width: 100%;
+			border: 1px solid #663333;
+			font-size: 1.5em;
+			line-height: 30px;
+			vertical-align: middle;
+			background-color: #FF6633;
+		}
+		.msg {
+			font-weight: 500;
+			color: #FF0000;
+			padding-left: 20px;
+		}
+		.bt {
+			font-size: 1.5em;
+			color: #FFFFFF;
+			height: 40px;
+			width: 80px;
+			background-color: #0099ff;
+			border-top-width: 0px;
+			border-right-width: 0px;
+			border-bottom-width: 0px;
+			border-left-width: 0px;
+			border-top-style: none;
+			border-right-style: none;
+			border-bottom-style: none;
+			border-left-style: none;
+		}
+	</style>
+	</head>
+	<body>
+		<form id="form1" name="form1" method="post" action="">
+			<div id="war">
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			    <tr>
+			      <td height="40" colspan="3" align="center" valign="middle">  <h2> 新用户注册</h2></td>
+			    </tr>
+			    <tr>
+			      <td width="14%" height="40" align="right" valign="middle">邮箱：</td>
+			      <td width="41%" height="40" id="yx" valign="middle">
+			      	<label>
+			        	<input name="email" type="text" class="in" id="email" onblur="y_email()" />
+			      	</label>
+			      </td>
+			      <td width="45%" height="40" valign="middle">
+			      	<div class="msg" id="m_email"></div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td height="40" align="right" valign="middle">昵称：</td>
+			      <td height="40" valign="middle">
+			      	<label>
+			        	<input name="nc" type="text" class="in" id="nc" onblur="y_nc()" />
+			      	</label>
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_nc"></div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td height="40" align="right" valign="middle">性别：</td>
+			      <td height="40" valign="middle">
+			        <p>
+			          <label>
+			            <input type="radio" name="xb" value="男" id="xb_0" checked/>男
+			          </label>
+			          <label>
+			            <input type="radio" name="xb" value="女" id="xb_1" />女
+			          </label>
+			          <br />
+			      	</p>			       
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_xb"></div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <!--手机是11位数字，且首位字符为1，第二位为3、5、7、8-->
+			      <td height="40" align="right" valign="middle">手机：</td>
+			      <td height="40" valign="middle">
+			      	<label>
+			        	<input name="sj" type="text" class="in" id="sj" onblur="y_sj()"/>
+			      	</label>
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_sj"></div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <!--所在城市不为空-->
+			      <td height="40" align="right" valign="middle">所在城市：</td>
+			      <td height="40" valign="middle">
+			      	<label>
+				        <select name="cs" class="in" id="cs">
+				          <option value="n">……请选择所在城市……</option>
+				          <option value="牡丹江">牡丹江</option>
+				          <option value="哈尔滨">哈尔滨</option>
+				          <option value="齐齐哈尔">齐齐哈尔</option>
+				          <option value="大庆">大庆</option>
+				          <option value="佳木斯">佳木斯</option>
+				          <option value="鹤岗">鹤岗</option>
+				          <option value="伊春">伊春</option>
+				          <option value="鸡西">鸡西</option>
+			        	</select>
+			      	</label>
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_cs">
+			      		
+			      	</div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <!--密码不能少于6位，且两遍的密码一致-->
+			      <td height="40" align="right" valign="middle">密码：</td>
+			      <td height="40" valign="middle">
+			      	<label>
+			        	<input name="pwd" type="text" class="in" id="pwd" onblur="y_pwd()"/>
+			      	</label>
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_pwd">			      		
+			      	</div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td height="40" align="right" valign="middle">确认密码：</td>
+			      <td height="40" valign="middle">
+			      	<label>
+			        	<input name="pwd1" type="text" class="in" id="pwd1" onblur="y_pwd1()" />
+			      	</label>
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_pwd1"></div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td height="40" align="right" valign="middle">&nbsp;</td>
+			      <td height="40" valign="middle">同意服务条款
+			        <label>
+			        	<input type="checkbox" name="ty" id="ty" />
+			        </label>
+			      </td>
+			      <td height="40" valign="middle">
+			      	<div class="msg" id="m_ty">			      		
+			      	</div>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td height="40" align="right" valign="middle">&nbsp;</td>
+			      <td height="40" valign="middle">
+			      	<label>
+			        	<input name="button" type="submit" class="bt" id="button" value="提交" onclick="return y_tj()"/>
+			      	</label>
+			      </td>
+			      <td height="40" valign="middle">&nbsp;</td>
+			    </tr>
+			  </table>
+			</div>			
+		</form>
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script>
+			var okEmail=false,okSj=false,okNc=false,okPwd=false,okPwd1=false;
+			function y_email(){
+				var str=$("#email").val();
+				var reg=/[1-9]{1,}[@]{1}[1-9]{1,}/;
+				if(reg.test(str)){
+					$("#m_email").html("<img src=img/dui.gif />");
+					$("#email").removeClass();
+					$("#email").addClass("in");
+					okEmail=true;
+				}else{
+					$("#m_email").html("<img src=img/cuo.gif />");
+					$("#email").removeClass();
+					$("#email").addClass("err");
+				}
+			}
+			
+			function y_sj(){
+				var str=$("#sj").val();
+				var reg=/[1-9]{1,}[@]{1}[1-9]{1,}/;
+				if(reg.test(str)){
+					$("#m_sj").html("<img src=img/dui.gif />");
+					$("#sj").removeClass();
+					$("#sj").addClass("in");
+					okSj=true;
+				}else{
+					$("#m_sj").html("<img src=img/cuo.gif />");
+					$("#sj").removeClass();
+					$("#sj").addClass("err");
+				}
+			}
+		
+			
+			function y_nc(){
+				var str=$("#nc").val();
+				var reg=/[1-9]{1,}[@]{1}[1-9]{1,}/;
+				if(reg.test(str)){
+					$("#m_nc").html("<img src=img/dui.gif />");
+					$("#nc").removeClass();
+					$("#nc").addClass("in");
+					okNc=true;
+				}else{
+					$("#m_nc").html("<img src=img/cuo.gif />");
+					$("#nc").removeClass();
+					$("#nc").addClass("err");
+				}
+			}
+			
+			function y_sj(){
+				var str=$("#sj").val();
+				var reg=/[1-9]{1,}[@]{1}[1-9]{1,}/;
+				if(reg.test(str)){
+					$("#m_sj").html("<img src=img/dui.gif />");
+					$("#sj").removeClass();
+					$("#sj").addClass("in");
+					okSj=true;
+				}else{
+					$("#m_sj").html("<img src=img/cuo.gif />");
+					$("#sj").removeClass();
+					$("#sj").addClass("err");
+				}
+			}
+			
+			function y_pwd(){
+				var str=$("#pwd").val();
+				var reg=/[1-9]{1,}[@]{1}[1-9]{1,}/;
+				if(reg.test(str)){
+					$("#m_pwd").html("<img src=img/dui.gif />");
+					$("#pwd").removeClass();
+					$("#pwd").addClass("in");
+					okPwd=true;
+				}else{
+					$("#m_pwd").html("<img src=img/cuo.gif />");
+					$("#pwd").removeClass();
+					$("#pwd").addClass("err");
+				}
+			}
+				
+			function y_pwd1(){
+				if($("#pwd").val()==$("#pwd1").val()){
+					$("#m_pwd1").html("<img src=img/dui.gif />");
+					$("#pwd1").removeClass();
+					$("#pwd1").addClass("in");
+					okPwd1=true;
+				}else{
+					$("#m_pwd1").html("<img src=img/cuo.gif />");
+					$("#pwd1").removeClass();
+					$("#pwd1").addClass("err");
+				}
+			}
+			
+			$("button").click(function(){
+				if(okEmail&&okNc&&okSj&&okPwd&okPwd1&&("#ty").is(":checked")){
+					$("#form1").submit();
+				}else{
+					return false;
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

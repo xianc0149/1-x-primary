@@ -1,0 +1,35 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	
+}
+.nav{
+	list-style: none;
+	height: 30px;
+	border-bottom: 10px solid #f60;
+	margin: 20px 0 0 0;
+	padding-left: 50px;
+}
+.nav li{
+	float: left;
+}
+.nav li a{
+	border-radius: 20% 20% 20% 20%;
+	text-decoration: none;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	width: 80px;
+	background: url(../img/btnBg.png);
+	margin-left: 1px;
+	text-align: center;
+}
+.nav li a.on{
+	color: #fff;
+	background-position: 0 -30px;
+	width: 120px;
+}
+.nav *{
+	transition: all liner 0.3s;
+}

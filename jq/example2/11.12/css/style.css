@@ -1,0 +1,19 @@
+.clooapse{
+				width: 340px;
+				border: solid 1px #ccc;
+				margin: 2px;
+				float: left;
+			}
+			.clooapse dt{
+				padding:8px;
+				background: url(img/green.gif) repeat-x;
+				font-size: 13px;
+				font-weight: bold;
+				color: #71790C;
+				border-bottom: solid 1px #efefef;
+				cursor: pointer;
+			}
+			.clooapse dd{
+				margin: 0px;
+				padding: 6px;			
+			}
